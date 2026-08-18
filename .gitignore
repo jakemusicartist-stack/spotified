@@ -1,0 +1,48 @@
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.spec
+*.log
+*.lock
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+.env
+
+# ── Spotified launcher flag (local-only, not needed in repo) ─────────────────
+.deps_installed
+
+# ── Downloaded music files ───────────────────────────────────────────────────
+*.mp3
+*.m4a
+*.flac
+*.wav
+*.ogg
+
+# ── OS junk ──────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE / Editor ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Secrets / local config ───────────────────────────────────────────────────
+config.json
+*.env
+.env.*
+
+# ── NOTE: ffmpeg.exe IS included in the repo (required for downloads) ─────────
+# Do NOT add ffmpeg.exe here
+ 
+ffmpeg.exe

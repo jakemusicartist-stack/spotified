@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotified – Spotify Downloader</title>
+  <meta name="description" content="Spotified: Download Spotify tracks and playlists with metadata and cover art. Free, open-source tool by Shivam Kumar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2E4NTVmNyI+PHBhdGggZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJzNC40NzcgMTAgMTAgMTAgMTAtNC40NzcgMTAtMTBTMTcuNTIzIDIgMTIgMnptNC41ODYgMTQuNDI0Yy0uMTguMjk1LS41NjUuMzg3LS44Ni4yMDctMi4zNzctMS40NTQtNS4zNy0xLjc4My04Ljg5Mi0uOTgyLS4zMzYuMDc2LS42Ny0uMTM1LS43NDYtLjQ3Mi0uMDc2LS4zMzYuMTM1LS42Ny40NzItLjc0NiAzLjg1Ni0uODggNy4xNS0uNTA2IDkuODIyIDEuMTMuMjk1LjE4LjM4Ny41NjMuMjA0Ljg2M3ptMS4yMjQtMi43MjNjLS4yMjYuMzY3LS43MDcuNDg3LTEuMDc0LjI2LTIuNzItMS42NzItNi44Ny0yLjE1Ny0xMC4wOC0xLjE4Mi0uNDEzLjEyNS0uODUtLjEwNy0uOTc1LS41Mi0uMTI1LS40MTMuMTA3LS44NS41Mi0uOTc1IDMuNjYtMS4xMSA4LjIyNC0uNTcgMTEuMzUgMS4zNTMuMzY3LjIyNi40ODcuNzA3LjI2IDEuMDY0em0uMTA2LTIuODMzQzE0LjM4NSA4LjgxIDguMzUgOC42MDggNC44ODIgOS42NmMtLjUzLjE2LTEuMDktLjE0LTEuMjUtLjY3LS4xNi0uNTMuMTQtMS4wOS42Ny0xLjI1IDQuMDA0LTEuMjE1IDEwLjY2LS45ODMgMTQuNzQgMS40NC40NzcuMjgzLjYzMy45LjM1IDEuMzc3LS4yODMuNDc4LS45LjYzMy0xLjM3Ny4zNXoiLz48L3N2Zz4=">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="theme-system">
+
+  <!-- Background fluid gradient shapes -->
+  <div class="bg-blur bg-blur-1"></div>
+  <div class="bg-blur bg-blur-2"></div>
+  <div class="bg-blur bg-blur-3"></div>
+
+  <!-- Header / Navigation -->
+  <nav class="navbar glass">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <!-- Spotified Purple Logo -->
+        <svg class="brand-logo" viewBox="0 0 24 24" fill="currentColor" style="color:#a855f7">
+          <path
+            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.783-8.892-.982-.336.076-.67-.135-.746-.472-.076-.336.135-.67.472-.746 3.856-.88 7.15-.506 9.822 1.13.295.18.387.563.204.863zm1.224-2.723c-.226.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.08-1.182-.413.125-.85-.107-.975-.52-.125-.413.107-.85.52-.975 3.66-1.11 8.224-.57 11.35 1.353.367.226.487.707.26 1.064zm.106-2.833C14.385 8.81 8.35 8.608 4.882 9.66c-.53.16-1.09-.14-1.25-.67-.16-.53.14-1.09.67-1.25 4.004-1.215 10.66-.983 14.74 1.44.477.283.633.9.35 1.377-.283.478-.9.633-1.377.35z" />
+        </svg>
+        <span class="brand-text">Spoti<span class="text-purple">fied</span></span>
+      </div>
+
+      <!-- macOS/Apple style sliding tabs -->
+      <div class="nav-tabs-wrapper">
+        <div class="nav-tabs">
+          <div id="navIndicator" class="nav-indicator"></div>
+          <button class="nav-tab active" data-tab="single">Single Link</button>
+          <button class="nav-tab" data-tab="bulk">Bulk Queue</button>
+          <button class="nav-tab" data-tab="settings">Settings</button>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle visual theme">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="content-container">
+
+    <!-- SINGLE DOWNLOAD TAB -->
+    <section id="single-tab" class="tab-pane active">
+      <div class="section-intro">
+        <h1 class="hero-title">Download Spotify <span class="text-purple-gradient">Privately</span></h1>
+        <p class="hero-subtitle">High-fidelity conversions with metadata and cover art embedded directly.</p>
+      </div>
+
+      <div class="card hero-card glass">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <h2 class="card-header">
+            <svg class="card-header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" x2="12" y1="15" y2="3"></line>
+            </svg>
+            Paste Track or Playlist Link
+          </h2>
+
+          <div class="search-box">
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              <input type="text" id="singleUrl" placeholder="https://open.spotify.com/track/..." autocomplete="off">
+            </div>
+            <button id="singleDownloadBtn" class="btn btn-blue">
+              <span>Download</span>
+              <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+            <button id="singleCancelBtn" class="btn btn-danger hidden">
+              <span>Cancel</span>
+            </button>
+          </div>
+
+          <!-- Progress indicators -->
+          <div class="playback-progress-container hidden" id="singleProgressContainer">
+            <div class="progress-info">
+              <span id="singleStatus" class="progress-status">Preparing stream...</span>
+              <span id="singlePercent" class="progress-percentage">0%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div id="singleProgress" class="progress-bar-fill" style="width: 0%">
+                <div class="progress-bar-shimmer"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logs -->
+      <div id="singleLogContainer" class="card log-card glass hidden">
+        <div class="log-header">
+          <svg class="log-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          Console Logs
+        </div>
+        <div id="singleLogArea" class="log-viewport">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- BULK DOWNLOAD TAB -->
+    <section id="bulk-tab" class="tab-pane">
+      <div class="section-intro">
+        <h1 class="hero-title">High Speed <span class="text-purple-gradient">Parallel Queue</span></h1>
+        <p class="hero-subtitle">Process up to 5 links simultaneously with direct hardware lock bypass.</p>
+      </div>
+
+      <div class="bulk-container">
+        <!-- Input Panel -->
+        <div class="card glass">
+          <div class="card-content flex-col h-full">
+            <h2 class="card-header m-0 mb-4">
+              <svg class="card-header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+              Queue Manager
+            </h2>
+            <p class="helper-desc text-muted mb-4">Paste Spotify track or playlist links (one per line) below.</p>
+            <textarea id="bulkUrls" class="text-area-input"
+              placeholder="https://open.spotify.com/track/4PTG3...&#10;https://open.spotify.com/playlist/37i9..."></textarea>
+
+            <div class="action-row mt-4">
+              <button id="bulkAddBtn" class="btn btn-secondary">Add to Queue</button>
+              <button id="bulkStartBtn" class="btn btn-blue flex-1">
+                <span>Start Downloads</span>
+              </button>
+              <button id="bulkStopBtn" class="btn btn-danger flex-1 hidden">
+                <span>Stop Queue</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Panel -->
+        <div class="card glass">
+          <div class="card-content flex-col h-full">
+            <div class="flex-between mb-4">
+              <h2 class="card-header m-0">
+                <svg class="card-header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="9" y1="3" x2="9" y2="21"></line>
+                </svg>
+                Active Status
+              </h2>
+              <span id="queueBadge" class="pill-badge">0 items remaining</span>
+            </div>
+
+            <!-- Global progress bar -->
+            <div class="progress-bar-wrapper mb-4">
+              <div class="progress-info">
+                <span id="bulkStatus" class="progress-status text-muted truncate">Idle</span>
+              </div>
+              <div class="progress-bar-track">
+                <div id="bulkProgress" class="progress-bar-fill" style="width: 0%">
+                  <div class="progress-bar-shimmer"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="list-container flex-1">
+              <div id="queueList" class="queue-viewport">
+                <div class="empty-state">
+                  <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <span>No tracks in download queue</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS TAB -->
+    <section id="settings-tab" class="tab-pane">
+      <div class="section-intro">
+        <h1 class="hero-title">Client <span class="text-purple-gradient">Preferences</span></h1>
+        <p class="hero-subtitle">Configure output directories and visual theme behaviors.</p>
+      </div>
+
+      <div class="card glass settings-card">
+        <div class="card-content">
+          <h2 class="card-header mb-6">
+            <svg class="card-header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
+              </path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            System Settings
+          </h2>
+
+          <div class="settings-group">
+            <div class="input-field-group">
+              <label class="input-label" for="settingsOutDir">Output Folder Path</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <input type="text" id="settingsOutDir" placeholder="Default app's folder">
+              </div>
+              <p class="input-helper">Leave empty to use Windows standard Music folder. Path must exist.</p>
+            </div>
+
+            <div class="input-field-group">
+              <label class="input-label">Interface Theme Mode</label>
+              <div class="theme-segmented-control">
+                <button class="segmented-option" id="themeLightBtn">
+                  <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                  <span>Light</span>
+                </button>
+                <button class="segmented-option" id="themeDarkBtn">
+                  <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                  </svg>
+                  <span>Dark</span>
+                </button>
+                <button class="segmented-option" id="themeSystemBtn">
+                  <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                  <span>System</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button id="settingsSaveBtn" class="btn btn-blue w-full mt-4">
+            <span>Save Options</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Developer Info Footer -->
+  <footer class="dev-footer glass">
+    <div class="dev-footer-inner">
+      <div class="dev-info-left">
+        <svg class="dev-spotify-logo" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.783-8.892-.982-.336.076-.67-.135-.746-.472-.076-.336.135-.67.472-.746 3.856-.88 7.15-.506 9.822 1.13.295.18.387.563.204.863zm1.224-2.723c-.226.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.08-1.182-.413.125-.85-.107-.975-.52-.125-.413.107-.85.52-.975 3.66-1.11 8.224-.57 11.35 1.353.367.226.487.707.26 1.064zm.106-2.833C14.385 8.81 8.35 8.608 4.882 9.66c-.53.16-1.09-.14-1.25-.67-.16-.53.14-1.09.67-1.25 4.004-1.215 10.66-.983 14.74 1.44.477.283.633.9.35 1.377-.283.478-.9.633-1.377.35z"/>
+        </svg>
+        <div class="dev-title-block">
+          <span class="dev-app-name">Spotified</span>
+          <span class="dev-tagline">Open-source Spotify downloader</span>
+        </div>
+      </div>
+
+      <div class="dev-info-center">
+        <div class="dev-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Built by <strong>Shivam Kumar</strong> &mdash; Age 16 &middot; 2026</span>
+        </div>
+        <div class="dev-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="mailto:jakemusicartist@gmail.com" class="dev-link">jakemusicartist@gmail.com</a>
+        </div>
+        <div class="dev-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <a href="https://github.com/jakemusicartist-stack" target="_blank" rel="noopener" class="dev-link">jakemusicartist-stack</a>
+        </div>
+      </div>
+
+      <div class="dev-info-right">
+        <span class="dev-disclaimer">For educational use only. Download content you own or have rights to.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notifications container -->
+  <div id="toastContainer" class="toast-wrapper"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
