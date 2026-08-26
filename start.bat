@@ -32,9 +32,6 @@ if not exist "%~dp0ffmpeg.exe" (
     echo  [Spotified]  FFmpeg downloaded successfully.
 )
 
-goto :launchserver
-
-:launch
 cd /d "%~dp0web-app\spotified-backend"
 
 :launchserver

@@ -395,18 +395,35 @@ input[type="text"]:focus, .text-area-input:focus {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: inherit;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  /* YouTube Box Shadows for Elevation & Text Shadows */
+  box-shadow: 0 1px 5px rgba(0,0,0,.2);
+  text-shadow: 0 0 2px rgba(0,0,0,.5);
 }
-.btn-blue {
-  background-color: var(--accent-blue);
+/* SVG Drop Filters */
+.btn svg {
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.8));
+}
+.btn:hover {
+  /* Box Shadow Expansion & Transformations */
+  box-shadow: 0 4px 5px rgba(0,0,0,.2);
+  transform: translateY(-1px);
+}
+.btn:active {
+  /* Inset Shadows for Pressing Mechanisms */
+  box-shadow: inset 0 1px 0 rgba(0,0,0,.5);
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background-color: var(--accent-purple);
   color: #fff;
 }
-.btn-blue:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px -6px var(--accent-hover);
+.btn-primary:hover {
+  /* Gradient Overlays for hover states */
+  background: linear-gradient(180deg, var(--accent-purple-hover), var(--accent-purple));
 }
-.btn-blue:active {
+.btn-primary:active {
   transform: scale(0.97);
 }
 .btn-arrow {
@@ -414,7 +431,7 @@ input[type="text"]:focus, .text-area-input:focus {
   height: 1.15rem;
   transition: transform 0.25s ease;
 }
-.btn-blue:hover .btn-arrow {
+.btn-primary:hover .btn-arrow {
   transform: translateX(4px);
 }
 
@@ -424,20 +441,9 @@ input[type="text"]:focus, .text-area-input:focus {
   border: 1px solid var(--border-color);
 }
 .btn-secondary:hover {
-  background-color: var(--secondary-hover);
+  background: linear-gradient(180deg, var(--secondary-hover), var(--secondary-color));
 }
 .btn-secondary:active {
-  transform: scale(0.97);
-}
-
-.btn-danger {
-  background-color: var(--danger-color);
-  color: #fff;
-}
-.btn-danger:hover {
-  background-color: var(--danger-hover);
-}
-.btn-danger:active {
   transform: scale(0.97);
 }
 
@@ -877,4 +883,142 @@ input[type="text"]:focus, .text-area-input:focus {
   line-height: 1.5;
   text-align: right;
   display: block;
+}
+
+/* ── YouTube Player Reference Styles ─────────────────────────────── */
+/* Core Button Styles */
+.ytp-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+  text-align: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  cursor: default;
+  line-height: inherit;
+}
+.ytp-button:focus {
+  outline: 0;
+}
+.ytp-button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+.ytp-button:not([aria-disabled=true]):not([disabled]):not([aria-hidden=true]) {
+  cursor: pointer;
+}
+.html5-video-player .ytp-button[aria-disabled=true],
+.html5-video-player .ytp-button[disabled] {
+  opacity: .5;
+}
+
+/* Ad & Skip Button Styles */
+.ytp-ad-skip-button {
+  background: rgba(0,0,0,.7);
+  border: 1px solid rgba(255,255,255,.5);
+  border-right: 0;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  color: #fff;
+  direction: ltr;
+  font-size: 18px;
+  line-height: normal;
+  min-width: 0;
+  padding: 10px 6px 8px 10px;
+  width: auto;
+  text-align: center;
+  cursor: pointer;
+}
+.ytp-ad-skip-button-modern {
+  background: rgba(0,0,0,.6);
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  color: #fff;
+  direction: ltr;
+  font-family: Roboto,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 36px;
+  line-height: normal;
+  min-width: 0;
+  padding: 0 6px 0 16px;
+  width: auto;
+  text-align: center;
+  border-radius: 18px;
+  cursor: pointer;
+}
+
+/* Interactive Video (IV) Buttons */
+.iv-button {
+  display: inline-block;
+  height: 28px;
+  border: 1px solid transparent;
+  padding: 0 10px;
+  outline: 0;
+  font-family: YouTube Noto,Roboto,arial,sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  text-decoration: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  line-height: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  *overflow: visible;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.05);
+  box-shadow: 0 1px 0 rgba(0,0,0,.05);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.iv-button:hover {
+  background: #126db3;
+}
+.iv-button:active {
+  background: #095b99;
+  -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.5);
+  box-shadow: inset 0 1px 0 rgba(0,0,0,.5);
+}
+
+/* Key Border Implementations */
+.ytp-delhi-modern .ytp-chrome-controls .ytp-play-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-top: 8px;
+  -webkit-backdrop-filter: var(--yt-frosted-glass-backdrop-filter-override,blur(16px));
+  backdrop-filter: var(--yt-frosted-glass-backdrop-filter-override,blur(16px));
+  background: var(--yt-sys-color-baseline--overlay-background-medium-light,rgba(0,0,0,.3));
+  text-shadow: 0 0 2px #000;
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls .ytp-button:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-radius: 40px;
+  background-color: transparent;
+  pointer-events: none;
+  width: 48px;
+  height: calc(var(--yt-delhi-pill-height, 48px) - 8px);
+}
+.ytp-ad-hover-text-callout {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 0;
+  left: 20px;
+  overflow: visible;
+  position: absolute;
+  text-align: center;
+  top: 100%;
+  width: 0;
 }
